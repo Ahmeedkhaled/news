@@ -1,0 +1,18 @@
+{
+  "new_app": "News App",
+  "categories": "Categories",
+  "settings": "Settings",
+  "sports": "Sports",
+  "health": "Health",
+  "business": "Business",
+  "environment": "Environment",
+  "science": "Science",
+  "politics": "Politics",
+  "pick_your_category_of_interest": "Pick your category \nof interest",
+  "new_title": "New Title",
+  "search": "Search",
+  "english": "English",
+  "arabic": "Arabic",
+  "language": "Language"
+
+}
