@@ -7,6 +7,7 @@ class MyTheme{
   static Color blackColor=Color(0xff303030);
 
   static ThemeData lightMode=ThemeData(
+    primaryColor: primaryColor,
     appBarTheme: AppBarTheme(
       backgroundColor: primaryColor,
       centerTitle: true,
@@ -33,6 +34,12 @@ class MyTheme{
         fontSize: 24,
         fontWeight: FontWeight.w700,
         color: blackColor,
+
+      ),
+      titleLarge: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+        color: whiteColor,
 
       ),
     ),

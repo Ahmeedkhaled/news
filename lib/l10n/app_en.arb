@@ -13,6 +13,8 @@
   "search": "Search",
   "english": "English",
   "arabic": "Arabic",
-  "language": "Language"
+  "language": "Language",
+  "something_went_wrong": "Something went wrong",
+  "try_again": "Try Again"
 
 }

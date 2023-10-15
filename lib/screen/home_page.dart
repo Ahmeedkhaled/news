@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news/api_manager.dart';
+import 'package:news/modal/SourcesRespon.dart';
 import 'package:news/my_theme.dart';
+import 'package:news/tabs/tabs.dart';
+import 'package:news/widget/category_details.dart';
 import 'package:news/widget/drawer_icon_text.dart';
 
 class HomePage extends StatelessWidget {
@@ -46,6 +50,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+      body: CategoryDetails(),
     );
   }
 }

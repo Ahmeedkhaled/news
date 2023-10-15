@@ -13,6 +13,8 @@
   "search": "ابحث",
   "english": "الانجليزيه",
   "arabic": "العربيه",
-  "language": "اللغه"
+  "language": "اللغه",
+  "something_went_wrong": "حدث خطأ",
+  "try_again": "حاول لاحقا"
 
 }
