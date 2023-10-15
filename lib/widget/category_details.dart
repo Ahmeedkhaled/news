@@ -3,8 +3,13 @@ import 'package:news/api_manager.dart';
 import 'package:news/modal/SourcesRespon.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:news/tabs/tabs.dart';
-class CategoryDetails extends StatelessWidget{
+class CategoryDetails extends StatefulWidget{
 
+  @override
+  State<CategoryDetails> createState() => _CategoryDetailsState();
+}
+
+class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourcesRespon>(
@@ -18,7 +23,12 @@ class CategoryDetails extends StatelessWidget{
           return Column(
             children: [
               Text(AppLocalizations.of(context)!.something_went_wrong),
-              ElevatedButton(onPressed: (){}, child: Text(AppLocalizations.of(context)!.try_again))
+              ElevatedButton(onPressed: (){
+                ApiManager.getSource();
+                setState(() {
+
+                });
+              }, child: Text(AppLocalizations.of(context)!.try_again))
             ],
           );
         }
@@ -26,7 +36,12 @@ class CategoryDetails extends StatelessWidget{
           return Column(
             children: [
               Text(snapshot.data?.message??""),
-              ElevatedButton(onPressed: (){}, child: Text(AppLocalizations.of(context)!.try_again))
+              ElevatedButton(onPressed: (){
+                ApiManager.getSource();
+                setState(() {
+
+                });
+              }, child: Text(AppLocalizations.of(context)!.try_again))
             ],
           );
         }

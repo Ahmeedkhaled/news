@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/modal/SourcesRespon.dart';
+import 'package:news/news/news_category.dart';
 import 'package:news/tabs/tab_item.dart';
 
 class TabContainer extends StatefulWidget {
@@ -18,18 +19,23 @@ class _TabContainerState extends State<TabContainer> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: widget.sourceList.length,
-      child: TabBar(
-        onTap: (index) {
-          selectedIndex = index;
-          setState(() {});
-        },
-        indicatorColor: Colors.transparent,
-        isScrollable: true,
-        tabs: widget.sourceList
-            .map((source) => TabItem(
-                source: source,
-                isSelected: selectedIndex == widget.sourceList.indexOf(source)))
-            .toList(),
+      child: Column(
+        children: [
+          TabBar(
+            onTap: (index) {
+              selectedIndex = index;
+              setState(() {});
+            },
+            indicatorColor: Colors.transparent,
+            isScrollable: true,
+            tabs: widget.sourceList
+                .map((source) => TabItem(
+                    source: source,
+                    isSelected: selectedIndex == widget.sourceList.indexOf(source)))
+                .toList(),
+          ),
+          Expanded(child: NewsCategory(source: widget.sourceList[selectedIndex])),
+        ],
       ),
     );
   }
