@@ -17,6 +17,6 @@ DrawerIconText({required this.name,required this.icon});
         ],
       ),
     );
-    ;
+
   }
 }

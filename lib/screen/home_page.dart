@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:news/api_manager.dart';
+import 'package:news/category/category_fragment.dart';
 import 'package:news/modal/SourcesRespon.dart';
 import 'package:news/my_theme.dart';
+import 'package:news/screen/home_drawer.dart';
 import 'package:news/tabs/tabs.dart';
-import 'package:news/widget/category_details.dart';
+import 'package:news/category/category_details.dart';
 import 'package:news/widget/drawer_icon_text.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,45 +14,41 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context)!.new_app,
-          style: Theme.of(context).textTheme.titleSmall,
+    return Stack(
+      children: [
+        Container(
+          color: MyTheme.whiteColor,
+            child: Image.asset("assets/images/pattern.png",
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.cover,
+            )
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: IconButton(onPressed: (){
-              // search delget
-            }, icon: Icon(Icons.search,size: 30,)),
-          ),
-        ],
-      ),
-      drawer: Drawer(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(
-                vertical: MediaQuery.of(context).size.height*0.1
-              ),
-              decoration: BoxDecoration(
-                color: MyTheme.primaryColor,
 
-              ),
-                child: Text(
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBar(
+            title: Text(
               AppLocalizations.of(context)!.new_app,
               style: Theme.of(context).textTheme.titleSmall,
             ),
-              alignment: Alignment.center,
-            ),
-            DrawerIconText(name: AppLocalizations.of(context)!.categories, icon: Icons.list),
-            DrawerIconText(name: AppLocalizations.of(context)!.settings, icon: Icons.settings),
-          ],
+            actions: [
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: IconButton(onPressed: (){
+                  // search delget
+                }, icon: Icon(Icons.search,size: 30,)),
+              ),
+            ],
+          ),
+          drawer: Drawer(
+            child: HomeDrawer(),
+          ),
+          body: CategoryFragments(),
         ),
-      ),
-      body: CategoryDetails(),
+      ],
     );
   }
 }
+
+

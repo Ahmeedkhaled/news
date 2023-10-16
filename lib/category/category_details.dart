@@ -22,6 +22,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
         }else if(snapshot.hasError){
           return Column(
             children: [
+
               Text(AppLocalizations.of(context)!.something_went_wrong),
               ElevatedButton(onPressed: (){
                 ApiManager.getSource();
