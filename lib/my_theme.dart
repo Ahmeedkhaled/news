@@ -42,6 +42,13 @@ class MyTheme{
         color: whiteColor,
 
       ),
+      bodySmall: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w400,
+        color: primaryColor,
+
+      ),
+
     ),
 
   );
