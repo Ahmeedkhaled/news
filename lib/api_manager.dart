@@ -5,12 +5,13 @@ import 'package:news/modal/NewsResponse.dart';
 import 'package:news/modal/SourcesRespon.dart';
 
 class ApiManager{
-  static Future<SourcesRespon> getSource()async{
+  static Future<SourcesRespon> getSource(String categoryId)async{
 
     // https://newsapi.org/v2/top-headlines/sources?apiKey=ad9fa28f707047aa80c060b2707f0ae7
     
     Uri url=Uri.https(ApiConstant.baseUrl,ApiConstant.sourceUrl,{
-      'apiKey':'ad9fa28f707047aa80c060b2707f0ae7'
+      'apiKey':'ad9fa28f707047aa80c060b2707f0ae7',
+      'category':categoryId
     });
     try{
       var respone=await http.get(url);

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:news/my_theme.dart';
-import 'package:news/widget/drawer_icon_text.dart';
 
 class HomeDrawer extends StatelessWidget {
+  static const int category=1;
+  static const int settings=2;
+  Function onDrawerItemClick;
+  HomeDrawer({required this.onDrawerItemClick});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,7 +25,9 @@ class HomeDrawer extends StatelessWidget {
           alignment: Alignment.center,
         ),
         InkWell(
-          onTap: (){},
+          onTap: (){
+            onDrawerItemClick(HomeDrawer.category);
+          },
           child: Padding(
             padding: const EdgeInsets.all(14),
             child: Row(
@@ -44,6 +49,7 @@ class HomeDrawer extends StatelessWidget {
         ),
         InkWell(
           onTap: (){
+            onDrawerItemClick(HomeDrawer.settings);
 
           },
           child: Padding(

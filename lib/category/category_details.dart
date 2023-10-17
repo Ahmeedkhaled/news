@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:news/api_manager.dart';
 import 'package:news/modal/SourcesRespon.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news/modal/category.dart';
 import 'package:news/tabs/tabs.dart';
 class CategoryDetails extends StatefulWidget{
-
+Category category;
+CategoryDetails({required this.category});
   @override
   State<CategoryDetails> createState() => _CategoryDetailsState();
 }
@@ -13,7 +15,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<SourcesRespon>(
-      future: ApiManager.getSource(),
+      future: ApiManager.getSource(widget.category.id),
       builder:(context, snapshot){
         if(snapshot.connectionState==ConnectionState.waiting){
           return Center(child: CircularProgressIndicator(
@@ -22,13 +24,10 @@ class _CategoryDetailsState extends State<CategoryDetails> {
         }else if(snapshot.hasError){
           return Column(
             children: [
-
               Text(AppLocalizations.of(context)!.something_went_wrong),
               ElevatedButton(onPressed: (){
-                ApiManager.getSource();
-                setState(() {
-
-                });
+                ApiManager.getSource(widget.category.id);
+                setState(() {});
               }, child: Text(AppLocalizations.of(context)!.try_again))
             ],
           );
@@ -38,10 +37,8 @@ class _CategoryDetailsState extends State<CategoryDetails> {
             children: [
               Text(snapshot.data?.message??""),
               ElevatedButton(onPressed: (){
-                ApiManager.getSource();
-                setState(() {
-
-                });
+                ApiManager.getSource(widget.category.id);
+                setState(() {});
               }, child: Text(AppLocalizations.of(context)!.try_again))
             ],
           );
