@@ -1,16 +1,12 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:news/api_manager.dart';
 import 'package:news/category/category_fragment.dart';
-import 'package:news/modal/SourcesRespon.dart';
 import 'package:news/modal/category.dart';
 import 'package:news/my_theme.dart';
 import 'package:news/screen/home_drawer.dart';
 import 'package:news/screen/settings/settings_tab.dart';
-import 'package:news/tabs/tabs.dart';
 import 'package:news/category/category_details.dart';
-import 'package:news/widget/drawer_icon_text.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = "home_page";
@@ -46,7 +42,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: IconButton(onPressed: (){
-                  // search delget
+                  showSearch(context: context, delegate: CustomSearch());
                 }, icon: Icon(Icons.search,size: 30,)),
               ),
             ],
@@ -86,5 +82,29 @@ setState(() {
 });
   }
 }
+class CustomSearch extends SearchDelegate{
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+   return [
+     IconButton(onPressed: (){}, icon: Icon(Icons.search,color: MyTheme.primaryColor,size: 30,)),
+   ];
+  }
 
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return  IconButton(onPressed: (){}, icon: Icon(Icons.close));
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+   return Text("");
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+  return Text("data") ;
+  }
+
+
+}
 

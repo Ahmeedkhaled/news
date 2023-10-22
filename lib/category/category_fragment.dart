@@ -5,12 +5,12 @@ import 'package:news/category/category_item.dart';
 import 'package:news/modal/category.dart';
 
 class CategoryFragments extends StatelessWidget {
-  var categoryList=Category.getCategories();
   Function onCategoryClick;
   CategoryFragments({required this.onCategoryClick});
 
   @override
   Widget build(BuildContext context) {
+    var categoryList=Category.getCategories(context);
 
     return Container(
       padding: EdgeInsets.all(20),

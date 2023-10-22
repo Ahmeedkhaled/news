@@ -14,36 +14,36 @@ class Category {
       required this.imageUrl,
       required this.color});
 
-  static List<Category> getCategories() {
+  static List<Category> getCategories(BuildContext context) {
     return[
     Category(
         id: 'sports',
-        title: 'Sports',
+        title: AppLocalizations.of(context)!.sports,
         imageUrl: "assets/images/ball.png",
         color: Colors.red),
     Category(
         id: 'general',
-        title: 'General',
+        title: AppLocalizations.of(context)!.general,
         imageUrl: "assets/images/Politics.png",
         color: Color(0xff003E90)),
     Category(
         id: 'health',
-        title: 'Health',
+        title: AppLocalizations.of(context)!.health,
         imageUrl: "assets/images/health.png",
         color: Colors.pink),
     Category(
         id: 'business',
-        title: 'Business',
+        title: AppLocalizations.of(context)!.business,
         imageUrl: "assets/images/bussines.png",
         color: Colors.brown),
     Category(
         id: 'entertainment',
-        title: 'Entertainment',
+        title: AppLocalizations.of(context)!.environment,
         imageUrl: "assets/images/environment.png",
         color: Colors.blue),
     Category(
         id: 'science',
-        title: 'Science',
+        title: AppLocalizations.of(context)!.science,
         imageUrl: "assets/images/science.png",
         color: Colors.yellow),
     ];

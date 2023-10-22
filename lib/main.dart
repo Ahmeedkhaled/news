@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news/my_theme.dart';
+import 'package:news/news/news_title.dart';
 import 'package:news/providers/language.dart';
 import 'package:news/screen/home_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget{
       initialRoute:HomePage.routeName ,
       routes: {
         HomePage.routeName:(context)=>HomePage(),
+        NewsTitle.routeName:(context)=>NewsTitle(),
       },
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,

@@ -3,6 +3,9 @@ import 'package:news/api_manager.dart';
 import 'package:news/modal/NewsResponse.dart';
 import 'package:news/modal/SourcesRespon.dart';
 import 'package:news/news/news_item.dart';
+import 'package:news/news/news_title.dart';
+import 'package:news/providers/language.dart';
+import 'package:provider/provider.dart';
 
 class NewsCategory extends StatefulWidget {
   Source source;
@@ -15,50 +18,53 @@ class NewsCategory extends StatefulWidget {
 class _NewsCategoryState extends State<NewsCategory> {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppLanguage>(context);
     return FutureBuilder<NewsResponse>(
-      future: ApiManager.getNewsBySourceId(widget.source.id??""),
-        builder: (context, snapshot) {
-        if(snapshot.connectionState==ConnectionState.waiting){
-          return Center(child: CircularProgressIndicator(
-            color: Theme.of(context).primaryColor,
-          ),
+      future: ApiManager.getNewsBySourceId(
+          widget.source.id ?? "", provider.appLanguage),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).primaryColor,
+            ),
           );
-        }else if(snapshot.hasError){
+        } else if (snapshot.hasError) {
           return Column(
             children: [
               Text("someThing went Error"),
-              ElevatedButton(onPressed: (){
-                ApiManager.getNewsBySourceId(widget.source.id??"");
-                setState(() {
-
-                });
-              }, child: Text("Try Again")),
+              ElevatedButton(
+                  onPressed: () {
+                    ApiManager.getNewsBySourceId(
+                        widget.source.id ?? "", provider.appLanguage);
+                    setState(() {});
+                  },
+                  child: Text("Try Again")),
             ],
           );
         }
 
-        if(snapshot.data?.status!="ok"){
+        if (snapshot.data?.status != "ok") {
           return Column(
             children: [
-              Text(snapshot.data?.message??"someThing went Error"),
-              ElevatedButton(onPressed: (){
-                ApiManager.getNewsBySourceId(widget.source.id??"");
-                setState(() {
-
-                });
-              }, child: Text("Try Again")),
+              Text(snapshot.data?.message ?? "someThing went Error"),
+              ElevatedButton(
+                  onPressed: () {
+                    ApiManager.getNewsBySourceId(
+                        widget.source.id ?? "", provider.appLanguage);
+                    setState(() {});
+                  },
+                  child: Text("Try Again")),
             ],
           );
         }
-        List newsList=snapshot.data?.articles??[];
+        List newsList = snapshot.data?.articles ?? [];
         return ListView.builder(
-          itemCount: newsList.length,
-            itemBuilder: (context,index){
+            itemCount: newsList.length,
+            itemBuilder: (context, index) {
               return NewsItem(news: newsList[index]);
-
-            }
-        );
-        },
+            });
+      },
     );
   }
 }
