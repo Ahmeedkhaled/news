@@ -8,14 +8,14 @@ import 'package:news/my_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class NewsTitle extends StatefulWidget {
+class NewsDetails extends StatefulWidget {
   static const String routeName = "news_title";
   late NewsArgs news;
   @override
-  State<NewsTitle> createState() => _NewsTitleState();
+  State<NewsDetails> createState() => _NewsDetailsState();
 }
 
-class _NewsTitleState extends State<NewsTitle> {
+class _NewsDetailsState extends State<NewsDetails> {
   @override
   Widget build(BuildContext context) {
      widget.news = ModalRoute
@@ -123,7 +123,7 @@ class _NewsTitleState extends State<NewsTitle> {
     );
   }
 
-  _launchURL() async {
+ Future<void> _launchURL() async {
     final Uri url = Uri.parse(widget.news.url??"");
     if (!await launchUrl(url)) {
       throw Exception('Could not launch ${widget.news.url??""}');

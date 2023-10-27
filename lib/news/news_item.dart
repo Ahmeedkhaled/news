@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news/modal/NewsResponse.dart';
 import 'package:news/my_theme.dart';
-import 'package:news/news/news_title.dart';
+import 'package:news/news/news_details.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 class NewsItem extends StatelessWidget {
   News news;
@@ -12,7 +12,7 @@ class NewsItem extends StatelessWidget {
 
     return InkWell(
       onTap: (){
-        Navigator.of(context).pushNamed(NewsTitle.routeName,
+        Navigator.of(context).pushNamed(NewsDetails.routeName,
             arguments: NewsArgs(
                 title: news.title,
                 urlToImage: news.urlToImage,

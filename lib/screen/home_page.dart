@@ -7,6 +7,7 @@ import 'package:news/my_theme.dart';
 import 'package:news/screen/home_drawer.dart';
 import 'package:news/screen/settings/settings_tab.dart';
 import 'package:news/category/category_details.dart';
+import 'package:news/search/search.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = "home_page";
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: IconButton(onPressed: (){
-                  showSearch(context: context, delegate: CustomSearch());
+                  // CustomSearch();
                 }, icon: Icon(Icons.search,size: 30,)),
               ),
             ],
@@ -81,30 +82,5 @@ setState(() {
 
 });
   }
-}
-class CustomSearch extends SearchDelegate{
-  @override
-  List<Widget>? buildActions(BuildContext context) {
-   return [
-     IconButton(onPressed: (){}, icon: Icon(Icons.search,color: MyTheme.primaryColor,size: 30,)),
-   ];
-  }
-
-  @override
-  Widget? buildLeading(BuildContext context) {
-    return  IconButton(onPressed: (){}, icon: Icon(Icons.close));
-  }
-
-  @override
-  Widget buildResults(BuildContext context) {
-   return Text("");
-  }
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-  return Text("data") ;
-  }
-
-
 }
 

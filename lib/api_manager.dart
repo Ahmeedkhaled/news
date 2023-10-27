@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:news/api_constant.dart';
 import 'package:news/modal/NewsResponse.dart';
 import 'package:news/modal/SourcesRespon.dart';
-import 'package:news/news/news_item.dart';
 import 'package:news/screen/pageination.dart';
 
 
